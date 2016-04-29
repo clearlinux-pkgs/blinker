@@ -4,7 +4,7 @@
 #
 Name     : blinker
 Version  : 1.4
-Release  : 7
+Release  : 8
 URL      : https://pypi.python.org/packages/source/b/blinker/blinker-1.4.tar.gz
 Source0  : https://pypi.python.org/packages/source/b/blinker/blinker-1.4.tar.gz
 Summary  : Fast, simple object-to-object and broadcast signaling
