@@ -4,7 +4,7 @@
 #
 Name     : blinker
 Version  : 1.4
-Release  : 13
+Release  : 14
 URL      : https://pypi.python.org/packages/source/b/blinker/blinker-1.4.tar.gz
 Source0  : https://pypi.python.org/packages/source/b/blinker/blinker-1.4.tar.gz
 Summary  : Fast, simple object-to-object and broadcast signaling
@@ -32,13 +32,16 @@ python components for the blinker package.
 %setup -q -n blinker-1.4
 
 %build
+export LANG=C
+export SOURCE_DATE_EPOCH=1484534233
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
+export SOURCE_DATE_EPOCH=1484534233
 rm -rf %{buildroot}
-python2 setup.py build -b py2 install --root=%{buildroot}
-python3 setup.py build -b py3 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 
 %files
 %defattr(-,root,root,-)
