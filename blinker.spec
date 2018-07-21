@@ -4,7 +4,7 @@
 #
 Name     : blinker
 Version  : 1.4
-Release  : 19
+Release  : 20
 URL      : http://pypi.debian.net/blinker/blinker-1.4.tar.gz
 Source0  : http://pypi.debian.net/blinker/blinker-1.4.tar.gz
 Summary  : Fast, simple object-to-object and broadcast signaling
@@ -65,7 +65,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532208821
+export SOURCE_DATE_EPOCH=1532216751
 python3 setup.py build -b py3
 
 %install
