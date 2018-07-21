@@ -4,16 +4,18 @@
 #
 Name     : blinker
 Version  : 1.4
-Release  : 18
+Release  : 19
 URL      : http://pypi.debian.net/blinker/blinker-1.4.tar.gz
 Source0  : http://pypi.debian.net/blinker/blinker-1.4.tar.gz
 Summary  : Fast, simple object-to-object and broadcast signaling
 Group    : Development/Tools
 License  : MIT
+Requires: blinker-python3
+Requires: blinker-license
 Requires: blinker-python
+BuildRequires : buildreq-distutils3
 BuildRequires : pbr
 BuildRequires : pip
-BuildRequires : python-dev
 BuildRequires : python3-dev
 BuildRequires : setuptools
 
@@ -29,12 +31,30 @@ BuildRequires : setuptools
             >>> from blinker import signal
             >>> started = signal('round-started')
 
+%package license
+Summary: license components for the blinker package.
+Group: Default
+
+%description license
+license components for the blinker package.
+
+
 %package python
 Summary: python components for the blinker package.
 Group: Default
+Requires: blinker-python3
 
 %description python
 python components for the blinker package.
+
+
+%package python3
+Summary: python3 components for the blinker package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the blinker package.
 
 
 %prep
@@ -45,15 +65,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1503072812
-python2 setup.py build -b py2
+export SOURCE_DATE_EPOCH=1532208821
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1503072812
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+mkdir -p %{buildroot}/usr/share/doc/blinker
+cp LICENSE %{buildroot}/usr/share/doc/blinker/LICENSE
+python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -61,7 +80,13 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/blinker/LICENSE
+
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python2*/*
+
+%files python3
+%defattr(-,root,root,-)
 /usr/lib/python3*/*
