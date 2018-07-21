@@ -4,7 +4,7 @@
 #
 Name     : blinker
 Version  : 1.4
-Release  : 17
+Release  : 18
 URL      : http://pypi.debian.net/blinker/blinker-1.4.tar.gz
 Source0  : http://pypi.debian.net/blinker/blinker-1.4.tar.gz
 Summary  : Fast, simple object-to-object and broadcast signaling
