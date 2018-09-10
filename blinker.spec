@@ -4,9 +4,9 @@
 #
 Name     : blinker
 Version  : 1.4
-Release  : 20
-URL      : http://pypi.debian.net/blinker/blinker-1.4.tar.gz
-Source0  : http://pypi.debian.net/blinker/blinker-1.4.tar.gz
+Release  : 21
+URL      : https://files.pythonhosted.org/packages/1b/51/e2a9f3b757eb802f61dc1f2b09c8c99f6eb01cf06416c0671253536517b6/blinker-1.4.tar.gz
+Source0  : https://files.pythonhosted.org/packages/1b/51/e2a9f3b757eb802f61dc1f2b09c8c99f6eb01cf06416c0671253536517b6/blinker-1.4.tar.gz
 Summary  : Fast, simple object-to-object and broadcast signaling
 Group    : Development/Tools
 License  : MIT
@@ -14,10 +14,6 @@ Requires: blinker-python3
 Requires: blinker-license
 Requires: blinker-python
 BuildRequires : buildreq-distutils3
-BuildRequires : pbr
-BuildRequires : pip
-BuildRequires : python3-dev
-BuildRequires : setuptools
 
 %description
 # Blinker
@@ -65,7 +61,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532216751
+export SOURCE_DATE_EPOCH=1536551803
 python3 setup.py build -b py3
 
 %install
