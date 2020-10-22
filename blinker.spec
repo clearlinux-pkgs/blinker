@@ -4,7 +4,7 @@
 #
 Name     : blinker
 Version  : 1.4
-Release  : 29
+Release  : 30
 URL      : https://files.pythonhosted.org/packages/1b/51/e2a9f3b757eb802f61dc1f2b09c8c99f6eb01cf06416c0671253536517b6/blinker-1.4.tar.gz
 Source0  : https://files.pythonhosted.org/packages/1b/51/e2a9f3b757eb802f61dc1f2b09c8c99f6eb01cf06416c0671253536517b6/blinker-1.4.tar.gz
 Summary  : Fast, simple object-to-object and broadcast signaling
@@ -16,87 +16,16 @@ Requires: blinker-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 
 %description
-=======
-Blinker
-=======
-
-Blinker provides a fast dispatching system that allows any number of
-interested parties to subscribe to events, or "signals".
-
-Signal receivers can subscribe to specific senders or receive signals
-sent by any sender.
-
-    >>> from blinker import signal
-    >>> started = signal('round-started')
-    >>> def each(round):
-    ...     print "Round %s!" % round
-    ...
-    >>> started.connect(each)
-    
-    >>> def round_two(round):
-    ...     print "This is round two."
-    ...
-    >>> started.connect(round_two, sender=2)
-  
-    >>> for round in range(1, 4):
-    ...     started.send(round)
-    ...
-    Round 1!
-    Round 2!
-    This is round two.
-    Round 3!
-
-See the `Blinker documentation <https://pythonhosted.org/blinker/>`_ for more information.
-
-Requirements
-------------
-
-Blinker requires Python 2.4 or higher, Python 3.0 or higher, or Jython 2.5 or higher.
-
-Changelog Summary
------------------
-
-1.4 (July 23, 2015)
-
- - Verified Python 3.4 support (no changes needed)
- - Additional bookkeeping cleanup for non-ANY connections at disconnect
-   time.
- - Added Signal._cleanup_bookeeping() to prune stale bookkeeping on
-   demand
-
-1.3 (July 3, 2013)
-
- - The global signal stash behind blinker.signal() is now backed by a
-   regular name-to-Signal dictionary. Previously, weak references were
-   held in the mapping and ephemeral usage in code like
-   ``signal('foo').connect(...)`` could have surprising program behavior
-   depending on import order of modules.
- - blinker.Namespace is now built on a regular dict. Use
-   blinker.WeakNamespace for the older, weak-referencing behavior.
- - Signal.connect('text-sender') uses an alternate hashing strategy to
-   avoid sharp edges in text identity.
-
-1.2 (October 26, 2011)
-
- - Added Signal.receiver_connected and Signal.receiver_disconnected
-   per-Signal signals.
- - Deprecated the global 'receiver_connected' signal.
- - Verified Python 3.2 support (no changes needed!)
-
-1.1 (July 21, 2010)
-
- - Added ``@signal.connect_via(sender)`` decorator
- - Added ``signal.connected_to`` shorthand name for the
-   ``temporarily_connected_to`` context manager.
-
-1.0 (March 28, 2010)
-
- - Python 3.x compatibility
-
-0.9 (February 26, 2010)
-
- - Sphinx docs, project website
- - Added ``with a_signal.temporarily_connected_to(receiver): ...`` support
+# Blinker
+        
+        Blinker provides a fast dispatching system that allows any number of
+        interested parties to subscribe to events, or "signals".
+        
+        Signal receivers can subscribe to specific senders or receive signals
+        sent by any sender.
+        
+            >>> from blinker import signal
+            >>> started = signal('round-started')
 
 %package license
 Summary: license components for the blinker package.
@@ -134,12 +63,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1582850972
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1603388207
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
